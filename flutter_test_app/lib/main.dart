@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'demo-card.dart';
+import 'items.dart';
 
 void main() => runApp(const MyApp());
 
@@ -35,44 +37,18 @@ Widget _signUpParents() {
 }
 
 Widget _whereToGo() {
-  return Container(
-    width : 300,
 
-    child:CarouselSlider(
-      options: CarouselOptions(
-      height: 100,
-      enableInfiniteScroll: false,
-      initialPage: 1,),
-      items: [1, 2, 3, 4, 5,6].map((i) { //items의 개수를 동적으로 설정할 필요
-        return Builder(
-          builder: (BuildContext context) {
-            if (i == 1){
-              return Container(
-                alignment: const Alignment(100,0),
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(horizontal: 10.0),
-                decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.circular(10)),
-                child: Center(
-                  child : Text(
-                  'text $i',
-                  style: TextStyle(fontSize: 16.0),
-                )));
+  List<DemoCard> _cards = items.map((Item _item) => DemoCard(_item)).toList();
 
-            }
-            return Container(
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(horizontal: 10.0),
-                decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.circular(10)),
-                child: Center(
-                  child : Text(
-                  'text $i',
-                  style: TextStyle(fontSize: 16.0),
-                )));
-          },
-        );
-      }).toList(),
-    ),
-  );
+  return Stack(
+    alignment: AlignmentDirectional.topStart, 
+    children: <Widget>[
+      SizedBox(
+      height: 100, // constrain height
+      child: ListView( scrollDirection: Axis.horizontal, children: _cards),
+    )
+
+  ]);
 }
 
 Widget _myRecords() {

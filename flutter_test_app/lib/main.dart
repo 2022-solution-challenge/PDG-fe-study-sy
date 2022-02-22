@@ -35,26 +35,43 @@ Widget _signUpParents() {
 }
 
 Widget _whereToGo() {
-  return CarouselSlider(
-    options: CarouselOptions(
-    height: 150.0,     
-    viewportFraction: 0.3,
-    initialPage: 2,),
-    items: [1, 2, 3].map((i) { //items의 개수를 동적으로 설정할 필요
-      return Builder(
-        builder: (BuildContext context) {
-          return Container(
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.symmetric(horizontal: 5.0),
-              decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.circular(10)),
-              child: Center(
-                child : Text(
-                'text $i',
-                style: TextStyle(fontSize: 16.0),
-              )));
-        },
-      );
-    }).toList(),
+  return Container(
+    width : 300,
+
+    child:CarouselSlider(
+      options: CarouselOptions(
+      height: 100,
+      enableInfiniteScroll: false,
+      initialPage: 1,),
+      items: [1, 2, 3, 4, 5,6].map((i) { //items의 개수를 동적으로 설정할 필요
+        return Builder(
+          builder: (BuildContext context) {
+            if (i == 1){
+              return Container(
+                alignment: const Alignment(100,0),
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.symmetric(horizontal: 10.0),
+                decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.circular(10)),
+                child: Center(
+                  child : Text(
+                  'text $i',
+                  style: TextStyle(fontSize: 16.0),
+                )));
+
+            }
+            return Container(
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.symmetric(horizontal: 10.0),
+                decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.circular(10)),
+                child: Center(
+                  child : Text(
+                  'text $i',
+                  style: TextStyle(fontSize: 16.0),
+                )));
+          },
+        );
+      }).toList(),
+    ),
   );
 }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 void main() => runApp(const MyApp());
 
@@ -21,10 +22,44 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('This is a Home Page'),
-    );
+    return Column(children: <Widget>[
+      _signUpParents(),
+      _whereToGo(),
+      _myRecords(),
+    ]);
   }
+}
+
+Widget _signUpParents() {
+  return Text('등록하기');
+}
+
+Widget _whereToGo() {
+  return CarouselSlider(
+    options: CarouselOptions(
+    height: 150.0,     
+    viewportFraction: 0.3,
+    initialPage: 2,),
+    items: [1, 2, 3].map((i) { //items의 개수를 동적으로 설정할 필요
+      return Builder(
+        builder: (BuildContext context) {
+          return Container(
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(horizontal: 5.0),
+              decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.circular(10)),
+              child: Center(
+                child : Text(
+                'text $i',
+                style: TextStyle(fontSize: 16.0),
+              )));
+        },
+      );
+    }).toList(),
+  );
+}
+
+Widget _myRecords() {
+  return Text('내 기록 보기');
 }
 
 class UserPage extends StatelessWidget {
@@ -37,7 +72,6 @@ class UserPage extends StatelessWidget {
     );
   }
 }
-
 
 class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({Key? key}) : super(key: key);
@@ -65,7 +99,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Navi App'),
+        title: const Text('Navi'),
+        elevation: 0.0,
+        centerTitle: true,
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),

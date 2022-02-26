@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 class Record {
-	String name;
-	String description;
-	MaterialColor color;
-	IconData icon;
-	Record(this.name, this.description, this.color, this.icon);
+  String date;
+  String destination;
+  MaterialColor color;
+  String timeInterval;
+  Record(this.date, this.destination, this.color, this.timeInterval);
 }
 
 List<Record> records = [
-	Record('추가', "Something cool", Colors.amber, Icons.add),
-	Record('집', "Hey, why not?", Colors.cyan, Icons.home),
-	Record('학교', "This might be OK", Colors.indigo, Icons.school),
-	Record('D', "Totally awesome", Colors.green, Icons.crop),
-	Record('E', "Rockin out", Colors.pink, Icons.album),
-	Record('F', "Take a look", Colors.blue, Icons.adb)
+  Record('2020. 10. 01', "승일초등학교", Colors.amber, '8:00-9:00'),
+  Record('2020. 10. 02', "꿈빛누리학원", Colors.cyan, '8:00-9:00'),
+  Record('2020. 10. 02', "피아노학원", Colors.indigo, '8:00-9:00'),
+  Record('2020. 10. 02', "장독대", Colors.green, '8:00-9:00'),
+  Record('2020. 10. 02', "GIST", Colors.pink, '8:00-9:00'),
+  Record('2020. 10. 02', "떡볶이집", Colors.blue, '8:00-9:00')
 ];

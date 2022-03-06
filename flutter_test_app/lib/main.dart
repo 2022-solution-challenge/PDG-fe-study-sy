@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class UserPage extends StatelessWidget {
   const UserPage({Key? key}) : super(key: key);
 
@@ -53,12 +52,30 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Navi'),
-        elevation: 0.0,
-        centerTitle: true,
+    
+    AppBar buildAppBar() {
+    return AppBar(
+      backgroundColor: Color.fromARGB(255, 255, 155, 155),
+      elevation: 0,
+      leading: IconButton(
+        icon: Icon(Icons.backspace),
+        onPressed: () {},
       ),
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(Icons.search),
+          onPressed: () {},
+        ),
+        IconButton(
+          icon: Icon(Icons.home),
+          onPressed: () {},
+        ),
+        SizedBox(width: 20.0 / 2)
+      ],
+    );
+  }
+    return Scaffold(
+      appBar: buildAppBar(),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -78,5 +95,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         onTap: _onItemTapped,
       ),
     );
+
+    
   }
 }
